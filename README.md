@@ -42,7 +42,7 @@ urlShortener.configure({
             hostname: 'localhost',
             username: 'root',
             password: '',
-            schema: 'url_shortener',
+            schema: 'short_url',
             table: 'short_urls'
         }
     });

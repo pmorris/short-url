@@ -57,6 +57,7 @@ exports.shortenUrl = function (url) {
             if (results.length >= 1) {
                 // record found, return existing code
                 resolve(results[0].hash);
+                connection.end();
                 return;
             }
 
@@ -79,4 +80,31 @@ exports.shortenUrl = function (url) {
     });
 };
 
+exports.fetchByHash = function (hash) {
+    return new Promise(function (resolve, reject) {
 
+        // get a hash from the datastore
+        var connection = mysql.createConnection({
+                host     : config.mysql.hostname,
+                user     : config.mysql.username,
+                password : config.mysql.password,
+                database : config.mysql.schema
+            }),
+            sql = 'SELECT * FROM `' + config.mysql.table + '` WHERE `hash` = ? LIMIT 1';
+
+        connection.connect();
+
+        connection.query(sql, [hash], function (err, results, fields) {
+            if (err) {
+                connection.end();
+                reject(err);
+                return;
+            }
+
+            resolve(results);
+            connection.end();
+            return;
+        });
+
+    });
+}

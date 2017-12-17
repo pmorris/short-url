@@ -32,20 +32,20 @@ CREATE TABLE IF NOT EXISTS short_urls (
 ## Usage
 Load and configure
 ```js
-var urlShortener = require('short-url');
+var shortUrl = require('short-url');
 ```
 
 Setting options, and configuring the database connection
 ```js
-urlShortener.configure({
-        mysql: {
-            hostname: 'localhost',
-            username: 'root',
-            password: '',
-            schema: 'short_url',
-            table: 'short_urls'
-        }
-    });
+shortUrl.configure({
+    mysql: {
+        hostname: 'localhost',
+        username: 'root',
+        password: '',
+        schema: 'short_url',
+        table: 'short_urls'
+    }
+});
 ```
 
 ### Shorten a URL

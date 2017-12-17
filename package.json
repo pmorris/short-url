@@ -1,6 +1,6 @@
 {
   "name": "short-url",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "description": "A URL shortener with a MySQL backend",
   "main": "index.js",
   "scripts": {
